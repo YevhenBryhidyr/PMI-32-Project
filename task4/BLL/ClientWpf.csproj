@@ -1,0 +1,52 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="emailIcon.png" />
+    <None Remove="images\emailicon.png" />
+    <None Remove="images\logo.PNG" />
+    <None Remove="images\logo1.png" />
+    <None Remove="images\passwordicon.png" />
+    <None Remove="images\user.png" />
+    <None Remove="images\usericon.png" />
+    <None Remove="logo1.png" />
+    <None Remove="passwordIcon.png" />
+    <None Remove="userIcon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="emailIcon.png" />
+    <Content Include="images\emailicon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\logo.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\logo1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\passwordicon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\user.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\usericon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <PackageReference Include="EntityFramework" Version="6.2.0" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.0.1" />
+    <Reference Include="ChatServer">
+      <HintPath>..\ChatServer\ChatServer\obj\Debug\ChatServer.exe</HintPath>
+    </Reference>
+    <Resource Include="logo1.png" />
+    <Resource Include="passwordIcon.png" />
+    <Resource Include="userIcon.png" />
+  </ItemGroup>
+
+</Project>
