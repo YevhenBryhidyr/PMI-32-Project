@@ -1,0 +1,353 @@
+﻿<Window  x:Class="ClientWpf.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClientWpf"
+        mc:Ignorable="d"
+        Title="Login" Height="450" Width="600"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Background="Transparent"
+        AllowsTransparency="True"
+        MouseDown="Window_MouseDown">
+   
+    <Window.Triggers>
+        <EventTrigger SourceName="LoginWindowBorder" RoutedEvent="Window.Loaded">
+            <BeginStoryboard Name="LoginWindowBorderStory" >
+                <Storyboard>
+                    <ColorAnimationUsingKeyFrames Storyboard.TargetName="LoginWindowBorder" 
+                                                  Storyboard.TargetProperty="(Border.BorderBrush).(GradientBrush.GradientStops)[2].(GradientStop.Color)"
+                                                  RepeatBehavior="Forever">
+                        <EasingColorKeyFrame KeyTime="00:00:01" Value="#FFB82AD8"/>
+                        <EasingColorKeyFrame KeyTime="00:00:02" Value="#FF3A25A6"/>
+                        <EasingColorKeyFrame KeyTime="00:00:03" Value="#FF9F0595"/>
+                    </ColorAnimationUsingKeyFrames>
+                    <ColorAnimationUsingKeyFrames Storyboard.TargetName="LoginWindowBorder" 
+                                                  Storyboard.TargetProperty="(Border.BorderBrush).(GradientBrush.GradientStops)[0].(GradientStop.Color)"
+                                                  RepeatBehavior="Forever">
+                        <EasingColorKeyFrame KeyTime="00:00:01" Value="#FF9F0595"/>
+                        <EasingColorKeyFrame KeyTime="00:00:02" Value="#FFB82AD8"/>
+                        <EasingColorKeyFrame KeyTime="00:00:03" Value="#FF3A25A6"/>
+                    </ColorAnimationUsingKeyFrames>
+                    <ColorAnimationUsingKeyFrames Storyboard.TargetName="LoginWindowBorder" 
+                                                  Storyboard.TargetProperty="(Border.BorderBrush).(GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                  RepeatBehavior="Forever">
+                        <EasingColorKeyFrame KeyTime="00:00:01" Value="#FF3A25A6"/>
+                        <EasingColorKeyFrame KeyTime="00:00:02" Value="#FF9F0595"/>
+                        <EasingColorKeyFrame KeyTime="00:00:03" Value="#FFB82AD8"/>
+                    </ColorAnimationUsingKeyFrames>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+
+        <EventTrigger SourceName="logo" RoutedEvent="Window.Loaded">
+            <BeginStoryboard Name="LogoStory" >
+                <Storyboard>
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetName="logo" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+                        <EasingDoubleKeyFrame KeyTime="00:00:00.5000000" Value="-1"/>
+                        <EasingDoubleKeyFrame KeyTime="00:00:01" Value="1"/>
+                    </DoubleAnimationUsingKeyFrames>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+        <EventTrigger SourceName="LoginButton" RoutedEvent="Button.MouseEnter">
+            <BeginStoryboard Name="LoginStory">
+                <Storyboard>
+                    <ColorAnimationUsingKeyFrames Storyboard.TargetName="LoginButton"
+                                                  Storyboard.TargetProperty="(Control.Background).(SolidColorBrush.Color)" RepeatBehavior="Forever">
+                        <EasingColorKeyFrame KeyTime="00:00:01" Value="#CC7D0FA9"/>
+                        <EasingColorKeyFrame KeyTime="00:00:02" Value="#CCC818B6"/>
+                        <EasingColorKeyFrame KeyTime="00:00:03" Value="#CCA31DDA"/>
+                    </ColorAnimationUsingKeyFrames>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+        <EventTrigger SourceName="LoginButton" RoutedEvent="Button.MouseLeave">
+            <StopStoryboard BeginStoryboardName="LoginStory"/>
+        </EventTrigger>
+    </Window.Triggers>
+
+    <Border x:Name="LoginWindowBorder" CornerRadius="12"        
+            BorderThickness="4">
+        <Border.BorderBrush>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#FF3A25A6" Offset="0"/>
+                <GradientStop Color="#FFB82AD8" Offset="0.75"/>
+                <GradientStop Color="#FF9F0595" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.BorderBrush>
+        <Border.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF0D001F"/>
+                <GradientStop Color="#FF3A0088" Offset="1"/>
+                <GradientStop Color="#FF17022E" Offset="0.054"/>
+                <GradientStop Color="#FF27015A" Offset="0.763"/>
+                <GradientStop Color="#FF2E006B" Offset="0.873"/>
+                <GradientStop Color="#FF16012D" Offset="0.355"/>
+                <GradientStop Color="#FF1C013B" Offset="0.473"/>
+                <GradientStop Color="#FF200149" Offset="0.622"/>
+            </LinearGradientBrush>
+        </Border.Background>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="25"/>
+                    <ColumnDefinition Width="25"/>
+                    <ColumnDefinition Width="5"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text ="Log in"
+                           Foreground="#FFA57CD6"
+                           FontSize="10"
+                           FontFamily="Montserrat"
+                           Grid.Column="0"
+                           VerticalAlignment="Center"
+                           Margin="10,0,0,0"/>
+
+                <Button x:Name="minimizeWindow"                       
+                        BorderThickness="0"
+                        Content="-"
+                        Foreground="White"
+                        FontSize="16"
+                        FontFamily="Montserrat"
+                        Cursor="Arrow"
+                        Grid.Column="1"
+                        Click="MinimizeWindow_Click">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#FF721ED7"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF5C17B0"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="18" Height="18"
+                                    CornerRadius="9"
+                                    Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+
+                </Button>
+
+                <Button x:Name="closeWindow"                        
+                        BorderThickness="0"
+                        Content="X"     
+                        Foreground="White"
+                        FontSize="10"
+                        FontFamily="Montserrat"
+                        Cursor="Arrow"
+                        Grid.Column="2"
+                        Click="CloseWindow_Click">
+
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="Red"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FFBD0000"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="18" Height="18"
+                                    CornerRadius="9"
+                                    Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+
+            <StackPanel Width="300"
+                        Grid.Row="2"
+                        Orientation="Vertical"
+                        Margin="0,0,0,0">
+                <Image x:Name="logo" Source="/logo1.png"
+                       Width="296"
+                       Height="176" Stretch="Fill" RenderTransformOrigin="0.5,0.5" OpacityMask="{x:Null}">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+
+
+                <TextBlock Text="Username"
+                           Foreground="#FFA57CD6"
+                           FontSize="12"
+                           FontWeight="Medium"
+                           FontFamily="Montserrat"                          
+                           Margin="0,0,0,0"/>
+
+                <TextBox x:Name="LoginBox"
+                           FontSize="13"
+                           FontWeight="Medium"
+                           FontFamily="Montserrat"                            
+                           Foreground="#FFF1E5FF"
+                           CaretBrush="LightGray"
+                           BorderBrush="#FF721ED7"                           
+                           BorderThickness="1,1,1,1"
+                           Height="28"
+                           VerticalContentAlignment="Center"
+                           Margin="0,5,0,0"
+                           Padding="20,0,0,0" >
+
+                    <TextBox.Background>
+                        <ImageBrush ImageSource="/images/usericon.png"                                    
+                                    AlignmentX="Left"
+                                    AlignmentY="Bottom"
+                                    Stretch="Uniform" Opacity="0.8">
+                            <ImageBrush.Transform>
+                                <TransformGroup>
+                                    <ScaleTransform ScaleX="0.65" ScaleY="0.75"/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform Y="6" X="-4"/>
+                                </TransformGroup>
+                            </ImageBrush.Transform>
+                        </ImageBrush>
+
+                    </TextBox.Background>
+                </TextBox>
+
+
+                <TextBlock Text="Password"
+                           Foreground="#FFA57CD6"
+                           FontSize="12"
+                           FontWeight="Medium"
+                           FontFamily="Montserrat"                          
+                           Margin="0,15,0,0"/>
+
+                <PasswordBox x:Name="PasswordBox"
+                           FontSize="13"
+                           FontWeight="Medium"
+                           FontFamily="Montserrat"                          
+                           Foreground="#FFF1E5FF"
+                           CaretBrush="LightGray"
+                           BorderBrush="#FF721ED7"                          
+                           BorderThickness="1,1,1,1"
+                           Height="28"
+                           VerticalContentAlignment="Center"
+                           Margin="0,5,0,0"
+                           Padding="20,0,0,0">
+
+                    <PasswordBox.Background>
+                        <ImageBrush ImageSource="images/passwordicon.png"                                    
+                                    AlignmentX="Left"                                    
+                                    Stretch="Uniform"
+                                    Opacity="0.8">
+                            <ImageBrush.Transform>
+                                <TransformGroup>
+                                    <ScaleTransform ScaleX="1.65" ScaleY="1.5"/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform X="-25" Y="-4"/>
+                                </TransformGroup>
+                            </ImageBrush.Transform>
+
+                        </ImageBrush>
+
+                    </PasswordBox.Background>
+
+                </PasswordBox>
+
+
+                <Button x:Name="LoginButton"                       
+                        BorderThickness="0"
+                        Content="Log in"
+                        Foreground="#FFF1E5FF"
+                        FontSize="16"
+                        FontFamily="Montserrat"
+                        Cursor="Arrow"
+                        Grid.Column="2"
+                        Margin="0,20,0,0"
+                        Click="LoginButton_Click"
+                        Background="#CCA31DDA">
+                    
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="150" Height="40"
+                                    CornerRadius="9"
+                                    Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+
+                </Button>
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center"                          
+                            Margin="0,30,0,0">
+
+                    <TextBlock Text="First experience?"
+                               Foreground="#FFA57CD6"
+                               FontSize="10"
+                               FontWeight="Medium"
+                               FontFamily="Montserrat" 
+                               HorizontalAlignment="Center"                               
+                               Cursor="Arrow"/>
+
+                    <Button x:Name="SignUpButton"                       
+                        BorderThickness="0"
+                        Content="Create account"                       
+                        Background="Transparent"
+                        FontSize="10"
+                        FontWeight="Medium"
+                        FontFamily="Montserrat"
+                        Cursor="Arrow"                        
+                        Margin="5,0,0,05"
+                        Click="SignUpButton_Click">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Foreground" Value="#FFA57CD6"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Foreground" Value="#FFC7A0F6"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="70" Height="10"
+                                    CornerRadius="0"
+                                    Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+
+                    </Button>
+
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </Border>
+
+</Window>
